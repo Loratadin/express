@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+const serverless = require('serverless-http');
 
 //Require the Router we defined in cars.js
 var cars = [
@@ -19,4 +20,7 @@ app.get('/cars', function(req, res){
    res.send(cars);
 });
 
-app.listen(3000);
+// app.listen(3000);
+// https://8bs0kdbrcd.execute-api.us-east-1.amazonaws.com/prod/cars
+
+module.exports.handler = serverless(app);

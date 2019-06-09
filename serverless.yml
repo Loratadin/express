@@ -1,0 +1,19 @@
+service: cars-api
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: prod
+  region: us-east-1
+
+functions:
+  getCars:
+    handler: index.handler
+    events:
+      - http:
+          path: cars
+          method: get
+          cors: true
+    # events:
+    #   - http: ANY /
+    #   - http: 'ANY {proxy+}'
